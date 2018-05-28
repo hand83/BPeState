@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B22029D3-408E-4736-8C9F-9FC9C8AA8EFA}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>BPeState</RootNamespace>
+    <AssemblyName>BPeState</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Contractor.cs">
+      <DependentUpon>TbInv.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAddInv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddInv.Designer.cs">
+      <DependentUpon>FormAddInv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IC.cs">
+      <DependentUpon>TbInv.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Investment.cs">
+      <DependentUpon>TbInv.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IS.cs">
+      <DependentUpon>TbInv.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IT.cs">
+      <DependentUpon>TbInv.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Street.cs">
+      <DependentUpon>TbInv.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TbInv.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TbInv.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TbInv.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TbInv.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TbInv.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TbInv.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Transport.cs">
+      <DependentUpon>TbInv.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UCDel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCDel.Designer.cs">
+      <DependentUpon>UCDel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCAdd.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCAdd.Designer.cs">
+      <DependentUpon>UCAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCAddContractor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCAddContractor.Designer.cs">
+      <DependentUpon>UCAddContractor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCAddInv.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCAddInv.Designer.cs">
+      <DependentUpon>UCAddInv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCAddStreet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCAddStreet.Designer.cs">
+      <DependentUpon>UCAddStreet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCAddTransport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCAddTransport.Designer.cs">
+      <DependentUpon>UCAddTransport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCDelContractor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCDelContractor.Designer.cs">
+      <DependentUpon>UCDelContractor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCDelInvestment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCDelInvestment.Designer.cs">
+      <DependentUpon>UCDelInvestment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCDelStreet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCDelStreet.Designer.cs">
+      <DependentUpon>UCDelStreet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCDelTransport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCDelTransport.Designer.cs">
+      <DependentUpon>UCDelTransport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCSearch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCSearch.Designer.cs">
+      <DependentUpon>UCSearch.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAddInv.resx">
+      <DependentUpon>FormAddInv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UCDel.resx">
+      <DependentUpon>UCDel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCAdd.resx">
+      <DependentUpon>UCAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCAddContractor.resx">
+      <DependentUpon>UCAddContractor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCAddInv.resx">
+      <DependentUpon>UCAddInv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCAddStreet.resx">
+      <DependentUpon>UCAddStreet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCAddTransport.resx">
+      <DependentUpon>UCAddTransport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCDelContractor.resx">
+      <DependentUpon>UCDelContractor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCDelInvestment.resx">
+      <DependentUpon>UCDelInvestment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCDelStreet.resx">
+      <DependentUpon>UCDelStreet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCDelTransport.resx">
+      <DependentUpon>UCDelTransport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCSearch.resx">
+      <DependentUpon>UCSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\Contractor.datasource" />
+    <None Include="Properties\DataSources\IC.datasource" />
+    <None Include="Properties\DataSources\Investment.datasource" />
+    <None Include="Properties\DataSources\IS.datasource" />
+    <None Include="Properties\DataSources\IT.datasource" />
+    <None Include="Properties\DataSources\Street.datasource" />
+    <None Include="Properties\DataSources\Transport.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EntityDeploy Include="TbInv.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TbInv.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="TbInv.edmx.diagram">
+      <DependentUpon>TbInv.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TbInv.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TbInv.edmx</DependentUpon>
+      <LastGenOutput>TbInv.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="TbInv.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TbInv.edmx</DependentUpon>
+      <LastGenOutput>TbInv.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

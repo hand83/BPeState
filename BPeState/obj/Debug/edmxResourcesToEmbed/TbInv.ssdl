@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="tudbaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Contractors">
+    <Key>
+      <PropertyRef Name="Contractors_SK" />
+    </Key>
+    <Property Name="Contractors_SK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IC">
+    <Key>
+      <PropertyRef Name="IC_SK" />
+    </Key>
+    <Property Name="IC_SK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Investments_FK" Type="int" Nullable="false" />
+    <Property Name="Contractors_FK" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Investments">
+    <Key>
+      <PropertyRef Name="Investments_SK" />
+    </Key>
+    <Property Name="Investments_SK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Price_min" Type="decimal" Precision="6" Scale="3" Nullable="false" />
+    <Property Name="Price_max" Type="decimal" Precision="6" Scale="3" Nullable="false" />
+    <Property Name="Area_min" Type="int" Nullable="false" />
+    <Property Name="Area_max" Type="int" Nullable="false" />
+    <Property Name="Rooms_min" Type="tinyint" Nullable="false" />
+    <Property Name="Rooms_max" Type="tinyint" Nullable="false" />
+    <Property Name="Date_of_finish" Type="date" />
+    <Property Name="No_of_homes" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IS">
+    <Key>
+      <PropertyRef Name="IS_SK" />
+    </Key>
+    <Property Name="IS_SK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Investments_FK" Type="int" Nullable="false" />
+    <Property Name="Streets_FK" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IT">
+    <Key>
+      <PropertyRef Name="IT_SK" />
+    </Key>
+    <Property Name="IT_SK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Investments_FK" Type="int" Nullable="false" />
+    <Property Name="Transport_FK" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Streets">
+    <Key>
+      <PropertyRef Name="Streets_SK" />
+    </Key>
+    <Property Name="Streets_SK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="District" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Transport">
+    <Key>
+      <PropertyRef Name="Transport_SK" />
+    </Key>
+    <Property Name="Transport_SK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Number" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="Contractors_IC">
+    <End Role="Contractors" Type="Self.Contractors" Multiplicity="1" />
+    <End Role="IC" Type="Self.IC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contractors">
+        <PropertyRef Name="Contractors_SK" />
+      </Principal>
+      <Dependent Role="IC">
+        <PropertyRef Name="Contractors_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Investments_IC">
+    <End Role="Investments" Type="Self.Investments" Multiplicity="1" />
+    <End Role="IC" Type="Self.IC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Investments">
+        <PropertyRef Name="Investments_SK" />
+      </Principal>
+      <Dependent Role="IC">
+        <PropertyRef Name="Investments_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Investments_IS">
+    <End Role="Investments" Type="Self.Investments" Multiplicity="1" />
+    <End Role="IS" Type="Self.IS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Investments">
+        <PropertyRef Name="Investments_SK" />
+      </Principal>
+      <Dependent Role="IS">
+        <PropertyRef Name="Investments_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Investments_IT">
+    <End Role="Investments" Type="Self.Investments" Multiplicity="1" />
+    <End Role="IT" Type="Self.IT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Investments">
+        <PropertyRef Name="Investments_SK" />
+      </Principal>
+      <Dependent Role="IT">
+        <PropertyRef Name="Investments_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Streets_IS">
+    <End Role="Streets" Type="Self.Streets" Multiplicity="1" />
+    <End Role="IS" Type="Self.IS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Streets">
+        <PropertyRef Name="Streets_SK" />
+      </Principal>
+      <Dependent Role="IS">
+        <PropertyRef Name="Streets_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Transport_IT">
+    <End Role="Transport" Type="Self.Transport" Multiplicity="1" />
+    <End Role="IT" Type="Self.IT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transport">
+        <PropertyRef Name="Transport_SK" />
+      </Principal>
+      <Dependent Role="IT">
+        <PropertyRef Name="Transport_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="tudbaseModelStoreContainer">
+    <EntitySet Name="Contractors" EntityType="Self.Contractors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IC" EntityType="Self.IC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Investments" EntityType="Self.Investments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IS" EntityType="Self.IS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IT" EntityType="Self.IT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Streets" EntityType="Self.Streets" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Transport" EntityType="Self.Transport" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="Contractors_IC" Association="Self.Contractors_IC">
+      <End Role="Contractors" EntitySet="Contractors" />
+      <End Role="IC" EntitySet="IC" />
+    </AssociationSet>
+    <AssociationSet Name="Investments_IC" Association="Self.Investments_IC">
+      <End Role="Investments" EntitySet="Investments" />
+      <End Role="IC" EntitySet="IC" />
+    </AssociationSet>
+    <AssociationSet Name="Investments_IS" Association="Self.Investments_IS">
+      <End Role="Investments" EntitySet="Investments" />
+      <End Role="IS" EntitySet="IS" />
+    </AssociationSet>
+    <AssociationSet Name="Investments_IT" Association="Self.Investments_IT">
+      <End Role="Investments" EntitySet="Investments" />
+      <End Role="IT" EntitySet="IT" />
+    </AssociationSet>
+    <AssociationSet Name="Streets_IS" Association="Self.Streets_IS">
+      <End Role="Streets" EntitySet="Streets" />
+      <End Role="IS" EntitySet="IS" />
+    </AssociationSet>
+    <AssociationSet Name="Transport_IT" Association="Self.Transport_IT">
+      <End Role="Transport" EntitySet="Transport" />
+      <End Role="IT" EntitySet="IT" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

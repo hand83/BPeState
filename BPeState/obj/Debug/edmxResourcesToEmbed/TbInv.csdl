@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="tudbaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Contractor">
+    <Key>
+      <PropertyRef Name="Contractors_SK" />
+    </Key>
+    <Property Name="Contractors_SK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ICs" Relationship="Self.Contractors_IC" FromRole="Contractors" ToRole="IC" />
+  </EntityType>
+  <EntityType Name="IC">
+    <Key>
+      <PropertyRef Name="IC_SK" />
+    </Key>
+    <Property Name="IC_SK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Investments_FK" Type="Int32" Nullable="false" />
+    <Property Name="Contractors_FK" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Contractor" Relationship="Self.Contractors_IC" FromRole="IC" ToRole="Contractors" />
+    <NavigationProperty Name="Investment" Relationship="Self.Investments_IC" FromRole="IC" ToRole="Investments" />
+  </EntityType>
+  <EntityType Name="Investment">
+    <Key>
+      <PropertyRef Name="Investments_SK" />
+    </Key>
+    <Property Name="Investments_SK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Price_min" Type="Decimal" Precision="6" Scale="3" Nullable="false" />
+    <Property Name="Price_max" Type="Decimal" Precision="6" Scale="3" Nullable="false" />
+    <Property Name="Area_min" Type="Int32" Nullable="false" />
+    <Property Name="Area_max" Type="Int32" Nullable="false" />
+    <Property Name="Rooms_min" Type="Byte" Nullable="false" />
+    <Property Name="Rooms_max" Type="Byte" Nullable="false" />
+    <Property Name="Date_of_finish" Type="DateTime" Precision="0" />
+    <Property Name="No_of_homes" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ICs" Relationship="Self.Investments_IC" FromRole="Investments" ToRole="IC" />
+    <NavigationProperty Name="ISs" Relationship="Self.Investments_IS" FromRole="Investments" ToRole="IS" />
+    <NavigationProperty Name="IT" Relationship="Self.Investments_IT" FromRole="Investments" ToRole="IT" />
+  </EntityType>
+  <EntityType Name="IS">
+    <Key>
+      <PropertyRef Name="IS_SK" />
+    </Key>
+    <Property Name="IS_SK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Investments_FK" Type="Int32" Nullable="false" />
+    <Property Name="Streets_FK" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Investment" Relationship="Self.Investments_IS" FromRole="IS" ToRole="Investments" />
+    <NavigationProperty Name="Street" Relationship="Self.Streets_IS" FromRole="IS" ToRole="Streets" />
+  </EntityType>
+  <EntityType Name="IT">
+    <Key>
+      <PropertyRef Name="IT_SK" />
+    </Key>
+    <Property Name="IT_SK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Investments_FK" Type="Int32" Nullable="false" />
+    <Property Name="Transport_FK" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Investment" Relationship="Self.Investments_IT" FromRole="IT" ToRole="Investments" />
+    <NavigationProperty Name="Transport" Relationship="Self.Transport_IT" FromRole="IT" ToRole="Transport" />
+  </EntityType>
+  <EntityType Name="Street">
+    <Key>
+      <PropertyRef Name="Streets_SK" />
+    </Key>
+    <Property Name="Streets_SK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="District" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="ISs" Relationship="Self.Streets_IS" FromRole="Streets" ToRole="IS" />
+  </EntityType>
+  <EntityType Name="Transport">
+    <Key>
+      <PropertyRef Name="Transport_SK" />
+    </Key>
+    <Property Name="Transport_SK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Number" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="IT" Relationship="Self.Transport_IT" FromRole="Transport" ToRole="IT" />
+  </EntityType>
+  <Association Name="Contractors_IC">
+    <End Role="Contractors" Type="Self.Contractor" Multiplicity="1" />
+    <End Role="IC" Type="Self.IC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contractors">
+        <PropertyRef Name="Contractors_SK" />
+      </Principal>
+      <Dependent Role="IC">
+        <PropertyRef Name="Contractors_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Investments_IC">
+    <End Role="Investments" Type="Self.Investment" Multiplicity="1" />
+    <End Role="IC" Type="Self.IC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Investments">
+        <PropertyRef Name="Investments_SK" />
+      </Principal>
+      <Dependent Role="IC">
+        <PropertyRef Name="Investments_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Investments_IS">
+    <End Role="Investments" Type="Self.Investment" Multiplicity="1" />
+    <End Role="IS" Type="Self.IS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Investments">
+        <PropertyRef Name="Investments_SK" />
+      </Principal>
+      <Dependent Role="IS">
+        <PropertyRef Name="Investments_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Investments_IT">
+    <End Role="Investments" Type="Self.Investment" Multiplicity="1" />
+    <End Role="IT" Type="Self.IT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Investments">
+        <PropertyRef Name="Investments_SK" />
+      </Principal>
+      <Dependent Role="IT">
+        <PropertyRef Name="Investments_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Streets_IS">
+    <End Role="Streets" Type="Self.Street" Multiplicity="1" />
+    <End Role="IS" Type="Self.IS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Streets">
+        <PropertyRef Name="Streets_SK" />
+      </Principal>
+      <Dependent Role="IS">
+        <PropertyRef Name="Streets_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Transport_IT">
+    <End Role="Transport" Type="Self.Transport" Multiplicity="1" />
+    <End Role="IT" Type="Self.IT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transport">
+        <PropertyRef Name="Transport_SK" />
+      </Principal>
+      <Dependent Role="IT">
+        <PropertyRef Name="Transport_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="tudbaseEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Contractors" EntityType="Self.Contractor" />
+    <EntitySet Name="ICs" EntityType="Self.IC" />
+    <EntitySet Name="Investments" EntityType="Self.Investment" />
+    <EntitySet Name="ISs" EntityType="Self.IS" />
+    <EntitySet Name="IT" EntityType="Self.IT" />
+    <EntitySet Name="Streets" EntityType="Self.Street" />
+    <EntitySet Name="Transports" EntityType="Self.Transport" />
+    <AssociationSet Name="Contractors_IC" Association="Self.Contractors_IC">
+      <End Role="Contractors" EntitySet="Contractors" />
+      <End Role="IC" EntitySet="ICs" />
+    </AssociationSet>
+    <AssociationSet Name="Investments_IC" Association="Self.Investments_IC">
+      <End Role="Investments" EntitySet="Investments" />
+      <End Role="IC" EntitySet="ICs" />
+    </AssociationSet>
+    <AssociationSet Name="Investments_IS" Association="Self.Investments_IS">
+      <End Role="Investments" EntitySet="Investments" />
+      <End Role="IS" EntitySet="ISs" />
+    </AssociationSet>
+    <AssociationSet Name="Investments_IT" Association="Self.Investments_IT">
+      <End Role="Investments" EntitySet="Investments" />
+      <End Role="IT" EntitySet="IT" />
+    </AssociationSet>
+    <AssociationSet Name="Streets_IS" Association="Self.Streets_IS">
+      <End Role="Streets" EntitySet="Streets" />
+      <End Role="IS" EntitySet="ISs" />
+    </AssociationSet>
+    <AssociationSet Name="Transport_IT" Association="Self.Transport_IT">
+      <End Role="Transport" EntitySet="Transports" />
+      <End Role="IT" EntitySet="IT" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

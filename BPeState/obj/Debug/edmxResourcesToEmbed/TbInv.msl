@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="tudbaseModelStoreContainer" CdmEntityContainer="tudbaseEntities2">
+    <EntitySetMapping Name="Contractors">
+      <EntityTypeMapping TypeName="tudbaseModel.Contractor">
+        <MappingFragment StoreEntitySet="Contractors">
+          <ScalarProperty Name="Contractors_SK" ColumnName="Contractors_SK" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ICs">
+      <EntityTypeMapping TypeName="tudbaseModel.IC">
+        <MappingFragment StoreEntitySet="IC">
+          <ScalarProperty Name="IC_SK" ColumnName="IC_SK" />
+          <ScalarProperty Name="Investments_FK" ColumnName="Investments_FK" />
+          <ScalarProperty Name="Contractors_FK" ColumnName="Contractors_FK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Investments">
+      <EntityTypeMapping TypeName="tudbaseModel.Investment">
+        <MappingFragment StoreEntitySet="Investments">
+          <ScalarProperty Name="Investments_SK" ColumnName="Investments_SK" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Price_min" ColumnName="Price_min" />
+          <ScalarProperty Name="Price_max" ColumnName="Price_max" />
+          <ScalarProperty Name="Area_min" ColumnName="Area_min" />
+          <ScalarProperty Name="Area_max" ColumnName="Area_max" />
+          <ScalarProperty Name="Rooms_min" ColumnName="Rooms_min" />
+          <ScalarProperty Name="Rooms_max" ColumnName="Rooms_max" />
+          <ScalarProperty Name="Date_of_finish" ColumnName="Date_of_finish" />
+          <ScalarProperty Name="No_of_homes" ColumnName="No_of_homes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ISs">
+      <EntityTypeMapping TypeName="tudbaseModel.IS">
+        <MappingFragment StoreEntitySet="IS">
+          <ScalarProperty Name="IS_SK" ColumnName="IS_SK" />
+          <ScalarProperty Name="Investments_FK" ColumnName="Investments_FK" />
+          <ScalarProperty Name="Streets_FK" ColumnName="Streets_FK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IT">
+      <EntityTypeMapping TypeName="tudbaseModel.IT">
+        <MappingFragment StoreEntitySet="IT">
+          <ScalarProperty Name="IT_SK" ColumnName="IT_SK" />
+          <ScalarProperty Name="Investments_FK" ColumnName="Investments_FK" />
+          <ScalarProperty Name="Transport_FK" ColumnName="Transport_FK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Streets">
+      <EntityTypeMapping TypeName="tudbaseModel.Street">
+        <MappingFragment StoreEntitySet="Streets">
+          <ScalarProperty Name="Streets_SK" ColumnName="Streets_SK" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="District" ColumnName="District" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transports">
+      <EntityTypeMapping TypeName="tudbaseModel.Transport">
+        <MappingFragment StoreEntitySet="Transport">
+          <ScalarProperty Name="Transport_SK" ColumnName="Transport_SK" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

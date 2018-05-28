@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5ad77fda26134187b749eecef182485d" Name="Diagram1">
+        <EntityTypeShape EntityType="tudbaseModel.Contractor" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="tudbaseModel.IC" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="tudbaseModel.Investment" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="tudbaseModel.IS" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="tudbaseModel.IT" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="tudbaseModel.Street" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="tudbaseModel.Transport" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <AssociationConnector Association="tudbaseModel.Contractors_IC" ManuallyRouted="false" />
+        <AssociationConnector Association="tudbaseModel.Investments_IC" ManuallyRouted="false" />
+        <AssociationConnector Association="tudbaseModel.Investments_IS" ManuallyRouted="false" />
+        <AssociationConnector Association="tudbaseModel.Investments_IT" ManuallyRouted="false" />
+        <AssociationConnector Association="tudbaseModel.Streets_IS" ManuallyRouted="false" />
+        <AssociationConnector Association="tudbaseModel.Transport_IT" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
